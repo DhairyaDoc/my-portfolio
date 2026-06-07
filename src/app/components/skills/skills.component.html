@@ -1,0 +1,39 @@
+<section class="skills-section">
+  <div class="skills-container">
+
+    <div class="skills-header">
+      <h2 class="section-title">
+        Skills & <span class="accent">Technologies</span>
+      </h2>
+      <p class="section-subtitle">
+        Technologies I work with daily and have shipped to production
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      @for (category of skillCategories; track category.title) {
+        <div class="skill-card">
+
+          <div class="card-header">
+            <div class="card-icon" [style.background]="category.bgColor">
+              {{ category.icon }}
+            </div>
+            <div class="card-titles">
+              <p class="card-title">{{ category.title }}</p>
+              <p class="card-subtitle">{{ category.subtitle }}</p>
+            </div>
+          </div>
+
+          <div class="pill-wrap">
+            @for (skill of category.skills; track skill) {
+              <span class="pill" [class]="'pill-' + category.color">
+                {{ skill }}
+              </span>
+            }
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+</section>

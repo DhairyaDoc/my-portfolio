@@ -1,1 +1,358 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* ── Modern portfolio palette: Zinc + Emerald/Violet ─────────── */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-primary: #09090b;
+  --bg-secondary: #18181b;
+  --bg-card: #1c1c1f;
+  --bg-elevated: #27272a;
+  --navbar-bg: rgba(9, 9, 11, 0.82);
+  --navbar-shadow: none;
+
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --accent: #34d399;
+  --accent-hover: #10b981;
+  --accent-secondary: #a78bfa;
+  --accent-rgb: 52, 211, 153;
+  --accent-secondary-rgb: 167, 139, 250;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 12px 40px rgba(52, 211, 153, 0.18);
+  --overlay: rgba(0, 0, 0, 0.75);
+
+  --blob-1: #34d399;
+  --blob-2: #a78bfa;
+  --blob-3: #22d3ee;
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --blob-opacity: 0.12;
+
+  --pill-purple-bg: rgba(167, 139, 250, 0.12);
+  --pill-purple-text: #c4b5fd;
+  --pill-purple-border: rgba(167, 139, 250, 0.28);
+
+  --pill-cyan-bg: rgba(34, 211, 238, 0.1);
+  --pill-cyan-text: #67e8f9;
+  --pill-cyan-border: rgba(34, 211, 238, 0.25);
+
+  --pill-green-bg: rgba(52, 211, 153, 0.1);
+  --pill-green-text: #6ee7b7;
+  --pill-green-border: rgba(52, 211, 153, 0.25);
+
+  --pill-pink-bg: rgba(244, 114, 182, 0.1);
+  --pill-pink-text: #f9a8d4;
+  --pill-pink-border: rgba(244, 114, 182, 0.25);
+
+  --pill-blue-bg: rgba(96, 165, 250, 0.1);
+  --pill-blue-text: #93c5fd;
+  --pill-blue-border: rgba(96, 165, 250, 0.25);
+
+  --pill-teal-bg: rgba(45, 212, 191, 0.1);
+  --pill-teal-text: #5eead4;
+  --pill-teal-border: rgba(45, 212, 191, 0.25);
+
+  --pill-amber-bg: rgba(251, 191, 36, 0.1);
+  --pill-amber-text: #fcd34d;
+  --pill-amber-border: rgba(251, 191, 36, 0.25);
+
+  --pill-coral-bg: rgba(251, 113, 133, 0.1);
+  --pill-coral-text: #fda4af;
+  --pill-coral-border: rgba(251, 113, 133, 0.25);
+
+  --success-bg: rgba(52, 211, 153, 0.1);
+  --success-text: #6ee7b7;
+  --success-border: rgba(52, 211, 153, 0.28);
+  --success-dot: #34d399;
+
+  /* Hero illustration */
+  --svg-glow: rgba(52, 211, 153, 0.22);
+  --svg-glow-outer: rgba(167, 139, 250, 0.08);
+  --svg-body: #27272a;
+  --svg-inner: #3f3f46;
+  --svg-screen: #09090b;
+  --svg-screen-border: #3f3f46;
+  --svg-pupil: #fafafa;
+  --svg-line: #a1a1aa;
+  --svg-stroke: #34d399;
+  --svg-arm-outer: #27272a;
+  --svg-arm-inner: #3f3f46;
+  --svg-platform: #18181b;
+  --svg-code-keyword: #34d399;
+  --svg-code-fn: #a78bfa;
+  --svg-code-string: #f472b6;
+  --svg-code-comment: #71717a;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f4f4f5;
+  --navbar-bg: rgba(255, 255, 255, 0.88);
+  --navbar-shadow: 0 1px 0 var(--border-subtle);
+
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-secondary: #7c3aed;
+  --accent-rgb: 5, 150, 105;
+  --accent-secondary-rgb: 124, 58, 237;
+  --accent-secondary-rgb: 124, 58, 237;
+
+  --border: rgba(24, 24, 27, 0.1);
+  --border-subtle: rgba(24, 24, 27, 0.06);
+  --shadow: 0 8px 32px rgba(24, 24, 27, 0.08);
+  --shadow-accent: 0 12px 40px rgba(5, 150, 105, 0.12);
+  --overlay: rgba(24, 24, 27, 0.5);
+
+  --blob-1: #6ee7b7;
+  --blob-2: #c4b5fd;
+  --blob-3: #67e8f9;
+  --grid-line: rgba(24, 24, 27, 0.06);
+  --blob-opacity: 0.18;
+
+  --pill-purple-bg: #f5f3ff;
+  --pill-purple-text: #6d28d9;
+  --pill-purple-border: #c4b5fd;
+
+  --pill-cyan-bg: #ecfeff;
+  --pill-cyan-text: #0e7490;
+  --pill-cyan-border: #67e8f9;
+
+  --pill-green-bg: #ecfdf5;
+  --pill-green-text: #047857;
+  --pill-green-border: #6ee7b7;
+
+  --pill-pink-bg: #fdf2f8;
+  --pill-pink-text: #be185d;
+  --pill-pink-border: #f9a8d4;
+
+  --pill-blue-bg: #eff6ff;
+  --pill-blue-text: #1d4ed8;
+  --pill-blue-border: #93c5fd;
+
+  --pill-teal-bg: #f0fdfa;
+  --pill-teal-text: #0f766e;
+  --pill-teal-border: #5eead4;
+
+  --pill-amber-bg: #fffbeb;
+  --pill-amber-text: #b45309;
+  --pill-amber-border: #fcd34d;
+
+  --pill-coral-bg: #fff1f2;
+  --pill-coral-text: #be123c;
+  --pill-coral-border: #fda4af;
+
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --success-border: #6ee7b7;
+  --success-dot: #059669;
+
+  --svg-glow: rgba(5, 150, 105, 0.15);
+  --svg-glow-outer: rgba(124, 58, 237, 0.08);
+  --svg-body: #e4e4e7;
+  --svg-inner: #d4d4d8;
+  --svg-screen: #ffffff;
+  --svg-screen-border: #d4d4d8;
+  --svg-pupil: #18181b;
+  --svg-line: #52525b;
+  --svg-stroke: #059669;
+  --svg-arm-outer: #e4e4e7;
+  --svg-arm-inner: #d4d4d8;
+  --svg-platform: #f4f4f5;
+  --svg-code-keyword: #059669;
+  --svg-code-fn: #7c3aed;
+  --svg-code-string: #db2777;
+  --svg-code-comment: #a1a1aa;
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    fill 0.45s ease,
+    stroke 0.45s ease !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section {
+  padding: 100px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-accent);
+  }
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--pill-purple-bg);
+  color: var(--pill-purple-text);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 4px;
+  border: 1px solid var(--pill-purple-border);
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+
+  &.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+
+    &:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+  }
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg .blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: var(--blob-opacity);
+  animation: blobMove 8s ease-in-out infinite;
+}
+
+.hero-bg .blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--blob-1);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.hero-bg .blob-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--blob-2);
+  top: 50%;
+  right: -80px;
+  animation-delay: 3s;
+}
+
+.hero-bg .blob-3 {
+  width: 300px;
+  height: 300px;
+  background: var(--blob-3);
+  bottom: -50px;
+  left: 40%;
+  animation-delay: 5s;
+}
+
+@keyframes blobMove {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 80%);
+}

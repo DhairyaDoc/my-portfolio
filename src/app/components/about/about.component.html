@@ -1,0 +1,73 @@
+<section class="about-section">
+  <div class="about-container">
+
+    <div class="about-header">
+      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <p class="section-subtitle">The person behind the code</p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="photo-col">
+        <div class="photo-placeholder">
+          <div class="photo-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <p class="photo-label">Your photo<br>goes here</p>
+        </div>
+      </div>
+
+      <div class="bio-col">
+
+        <h3 class="bio-name">Dhairya Doctor</h3>
+        <p class="bio-role">
+          Senior Software Developer · Royal Bank of Canada
+        </p>
+
+        <p class="bio-text">
+          I am a Senior Software Developer with 4+ years of experience
+          building enterprise-grade applications across government and
+          banking sectors. I specialize in Angular, React, Node.js, and
+          AWS, with a growing focus on Agentic AI tools and cloud-native
+          development.
+        </p>
+
+        <p class="bio-text">
+          Currently at RBC, I architect scalable frontends, engineer
+          cloud microservices, and leverage AI tools like Windsurf and
+          GitHub Copilot to ship faster and smarter. I believe great
+          software is not just functional — it is secure, maintainable,
+          and built with intent.
+        </p>
+
+        <p class="bio-text">
+          Outside of work I enjoy exploring new technologies, contributing
+          to open source, and continuously sharpening my skills in
+          AI-powered development workflows. I am open to relocating
+          based on the right opportunity and company requirements.
+        </p>
+
+        <div class="info-grid">
+          @for (item of info; track item.label) {
+          <div class="info-card">
+            <p class="info-label">{{ item.label }}</p>
+            <p class="info-value">{{ item.value }}</p>
+          </div>
+          }
+        </div>
+
+        <div class="skill-pills">
+          @for (skill of skills; track skill) {
+          <span class="pill">{{ skill }}</span>
+          }
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,110 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-experience',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './experience.component.html',
+  styleUrls: ['./experience.component.scss'],
+})
+export class ExperienceComponent {
+  experiences = [
+    {
+      title: 'Senior Software Developer',
+      company: 'Royal Bank of Canada',
+      shortName: 'RBC',
+      location: 'Halifax, NS',
+      duration: 'May 2025 – Present',
+      type: 'Full Time',
+      current: true,
+      theme: 'purple',
+      technologies: [
+        'Angular',
+        'Node.js',
+        'Windsurf',
+        'GitHub Copilot',
+        'MsSQL Server',
+        'Snowflake',
+        'HDFS',
+        'Docker',
+        'OpenShift Container Platform (OCP)',
+        'GitHub Actions',
+        'SonarQube',
+      ],
+      summary:
+        'Leading end-to-end development of enterprise-grade UI and backend microservices at RBC, leveraging Agentic AI tools to accelerate delivery and improve code quality across production systems.',
+      points: [
+        'Developed a polished enterprise-level UI using Agentic AI tools — Windsurf and GitHub Copilot — resulting in improved user engagement and faster delivery cycles.',
+        'Built a Node.js backend microservice that loads HDFS and Snowflake production data into lower environments, enabling accurate production bug replication and feature testing with real data.',
+        'Took full code ownership of the UI and Dataload microservices, managing architecture decisions, code reviews, and deployment pipelines.',
+        'Implemented GitHub Actions CI/CD pipelines for streamlined, efficient deployments across all environments.',
+        'Developed AI-driven prompts using Agentic AI to automate unit test generation for frontend and backend microservices, integrating SonarQube to boost code coverage from 0% to 80%.',
+        'Resolved Aqua, Snyk, DAST, and Open Source vulnerabilities to ensure the application meets enterprise-level security standards in production.',
+        'Participated in production deployment activities and provided production support to resolve live environment issues swiftly.',
+      ],
+    },
+    {
+      title: 'Software Developer',
+      company: 'Canada Revenue Agency',
+      shortName: 'CRA',
+      location: 'Toronto, ON',
+      duration: 'Jan 2023 – Mar 2025',
+      type: 'Full Time',
+      current: false,
+      theme: 'cyan',
+      technologies: [
+        'Angular',
+        'TypeScript',
+        'Node.js',
+        'Express.js',
+        'SQL Server',
+        'Jenkins',
+        'SonarQube',
+        'JIRA',
+        'GitHub',
+      ],
+      summary:
+        'Contributed to enterprise-grade internal applications at Canada Revenue Agency, modernizing legacy systems, improving data performance, and driving CI/CD automation across Agile development teams.',
+      points: [
+        'Developed an enterprise-grade UI using Angular and TypeScript, enhancing data visualization for critical internal government applications.',
+        'Refactored legacy JavaScript code to modern Angular components, significantly improving maintainability, performance, and scalability.',
+        'Built RESTful Web Services using Node.js and Express.js, ensuring seamless and reliable communication between frontend and backend systems.',
+        'Integrated SQL Server databases with optimized queries, improving data retrieval performance by 20% and query execution efficiency by 30%.',
+        'Automated CI/CD pipelines with Jenkins and integrated SonarQube for continuous code quality monitoring, increasing compliance by 25%.',
+        'Utilized JIRA for streamlined incident tracking and project management, enhancing collaboration across development teams.',
+        'Followed Agile methodologies, collaborating with Product Managers and Senior Developers to implement new features iteratively.',
+        'Documented technical designs and development workflows in Confluence, improving knowledge sharing and onboarding efficiency.',
+        'Used GitHub for version control and conducting code reviews, maintaining high code quality and team collaboration standards.',
+      ],
+    },
+    {
+      title: 'Software Development Engineer',
+      company: 'Ajmera Infotech',
+      shortName: 'AI',
+      location: 'Gujarat, India',
+      duration: 'Oct 2020 – Jun 2021',
+      type: 'Full Time',
+      current: false,
+      theme: 'green',
+      technologies: [
+        'Angular',
+        'Spring Boot',
+        'SQL Server',
+        'Microsoft Azure',
+        'JIRA',
+        'Confluence',
+      ],
+      summary:
+        'Joined as a full-stack developer responsible for frontend development, backend API integration, and database optimization, working in an Agile environment to deliver a complete end-to-end application.',
+      points: [
+        'Implemented new UI pages and improved frontend performance using Angular DevTools, identifying and eliminating redundant API calls with Chrome DevTools to enhance application speed.',
+        'Developed Spring Boot REST API endpoints to retrieve and serve appropriate data from backend services to the frontend.',
+        'Mapped and integrated backend APIs with frontend components, ensuring successful end-to-end implementation of complete application flows.',
+        'Designed and optimized SQL Server stored procedures and queries, improving data retrieval efficiency and reducing query execution time by 30%.',
+        'Utilized JIRA for sprint planning, bug tracking, and progress monitoring, ensuring smooth Agile development workflows.',
+        'Maintained Confluence documentation for project architecture and troubleshooting guides, enhancing team collaboration and knowledge sharing.',
+      ],
+    },
+  ];
+}
