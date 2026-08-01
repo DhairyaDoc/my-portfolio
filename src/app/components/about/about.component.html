@@ -1,73 +1,75 @@
-<section class="about-section">
-  <div class="about-container">
+<section class="section about-section">
+  <div class="section-head" appReveal>
+    <p class="eyebrow">Who I am</p>
+    <h2 class="section-title">About <span class="accent">Me</span></h2>
+    <p class="section-subtitle">The engineer behind the code — and how I think about building software.</p>
+  </div>
 
-    <div class="about-header">
-      <h2 class="section-title">About <span class="accent">Me</span></h2>
-      <p class="section-subtitle">The person behind the code</p>
-    </div>
-
-    <div class="about-grid">
-
-      <div class="photo-col">
-        <div class="photo-placeholder">
-          <div class="photo-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-          <p class="photo-label">Your photo<br>goes here</p>
+  <div class="about-grid">
+    <!-- Photo column -->
+    <aside class="photo-col" appReveal>
+      <div class="photo-frame">
+        <img src="dhairya.jpg" alt="Dhairya Doctor" class="photo-img" width="800" height="800" />
+        <div class="photo-badge">
+          <span class="badge-dot"></span> Open to work
         </div>
       </div>
 
-      <div class="bio-col">
+      <div class="signature">
+        <span class="sig-name">Dhairya Doctor</span>
+        <span class="sig-role">Senior Software Developer</span>
+      </div>
+    </aside>
 
-        <h3 class="bio-name">Dhairya Doctor</h3>
-        <p class="bio-role">
-          Senior Software Developer · Royal Bank of Canada
+    <!-- Bio column -->
+    <div class="bio-col">
+      <div class="bio-block" appReveal [revealDelay]="80">
+        <p class="bio-lead">
+          I'm a Senior Software Developer with <strong>3+ years</strong> building
+          enterprise-grade applications across <strong>government and banking</strong>.
         </p>
-
         <p class="bio-text">
-          I am a Senior Software Developer with 4+ years of experience
-          building enterprise-grade applications across government and
-          banking sectors. I specialize in Angular, React, Node.js, and
-          AWS, with a growing focus on Agentic AI tools and cloud-native
-          development.
+          I specialize in Angular, React, Node.js and AWS, with a growing focus on
+          Agentic AI tooling and cloud-native development. At RBC I architect scalable
+          frontends, engineer cloud microservices, and leverage AI tools like Windsurf
+          and GitHub Copilot to ship faster and smarter.
         </p>
-
         <p class="bio-text">
-          Currently at RBC, I architect scalable frontends, engineer
-          cloud microservices, and leverage AI tools like Windsurf and
-          GitHub Copilot to ship faster and smarter. I believe great
-          software is not just functional — it is secure, maintainable,
-          and built with intent.
+          I believe great software isn't just functional — it's secure, maintainable,
+          and built with intent. Outside of work I explore new technologies, contribute
+          to open source, and sharpen my craft in AI-powered development workflows.
         </p>
+      </div>
 
-        <p class="bio-text">
-          Outside of work I enjoy exploring new technologies, contributing
-          to open source, and continuously sharpening my skills in
-          AI-powered development workflows. I am open to relocating
-          based on the right opportunity and company requirements.
-        </p>
+      <div class="values" appReveal [revealDelay]="140">
+        @for (v of values; track v.title) {
+          <div class="value-card card-x">
+            <i class="bi" [ngClass]="v.icon"></i>
+            <div>
+              <h4>{{ v.title }}</h4>
+              <p>{{ v.text }}</p>
+            </div>
+          </div>
+        }
+      </div>
 
-        <div class="info-grid">
-          @for (item of info; track item.label) {
+      <div class="info-grid" appReveal [revealDelay]="200">
+        @for (item of info; track item.label) {
           <div class="info-card">
-            <p class="info-label">{{ item.label }}</p>
-            <p class="info-value">{{ item.value }}</p>
+            <i class="bi" [ngClass]="item.icon"></i>
+            <div>
+              <p class="info-label">{{ item.label }}</p>
+              <p class="info-value">{{ item.value }}</p>
+            </div>
           </div>
-          }
-        </div>
+        }
+      </div>
 
-        <div class="skill-pills">
-          @for (skill of skills; track skill) {
-          <span class="pill">{{ skill }}</span>
-          }
-        </div>
-
+      <div class="skill-pills" appReveal [revealDelay]="260">
+        @for (skill of skills; track skill) {
+          <span class="pill pill-red">{{ skill }}</span>
+        }
       </div>
     </div>
-
   </div>
 </section>

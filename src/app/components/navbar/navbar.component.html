@@ -1,26 +1,35 @@
-<nav class="navbar">
+<nav class="site-nav" [class.menu-open]="menuOpen()">
   <div class="nav-inner">
-    <a class="logo" routerLink="/">DD<span>.</span></a>
-    <ul class="nav-links">
-      <li><a routerLink="/about"
-             routerLinkActive="active">About</a></li>
-      <li><a routerLink="/skills"
-             routerLinkActive="active">Skills</a></li>
-      <li><a routerLink="/experience"
-             routerLinkActive="active">Experience</a></li>
-      <li><a routerLink="/projects"
-             routerLinkActive="active">Projects</a></li>
-      <li><a routerLink="/certifications"
-             routerLinkActive="active">Certifications</a></li>
-      <li><a routerLink="/contact"
-             routerLinkActive="active">Contact</a></li>
-    </ul>
-    <button class="theme-toggle" (click)="toggleTheme()">
-      @if (isDark$ | async) {
-        <span>☀️</span>
-      } @else {
-        <span>🌙</span>
+    <a class="logo" routerLink="/" (click)="closeMenu()">
+      <span class="logo-mark">DD</span>
+      <span class="logo-slash">/</span>
+      <span class="logo-word">dev</span>
+    </a>
+
+    <ul class="nav-links" [class.open]="menuOpen()">
+      @for (link of links; track link.path) {
+        <li>
+          <a [routerLink]="link.path" routerLinkActive="active" (click)="closeMenu()">
+            <span class="link-index">0{{ $index + 1 }}</span>
+            {{ link.label }}
+          </a>
+        </li>
       }
-    </button>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
+        @if (isDark$ | async) {
+          <i class="bi bi-sun-fill"></i>
+        } @else {
+          <i class="bi bi-moon-stars-fill"></i>
+        }
+      </button>
+
+      <button class="burger" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+<div class="nav-scrim" [class.show]="menuOpen()" (click)="closeMenu()"></div>

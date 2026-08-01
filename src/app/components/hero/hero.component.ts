@@ -1,102 +1,76 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, inject, signal } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RevealDirective } from '../../directives/reveal.directive';
 
-interface HeroBadge {
-  icon: string;
-  label: string;
-  color: string;
-  style: Record<string, string>;
-  delay: string;
-}
+interface Stat { value: string; label: string; }
+interface Social { icon: string; label: string; url: string; }
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RevealDirective],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit, OnDestroy {
-  displayedTitle = '';
-  private fullTitle = 'Senior Frontend Developer';
-  private typeIndex = 0;
-  private typeInterval: ReturnType<typeof setInterval> | undefined;
+  private readonly platformId = inject(PLATFORM_ID);
 
-  tags = [
-    { label: 'Angular', color: 'purple' },
-    { label: 'React', color: 'purple' },
-    { label: 'TypeScript', color: 'purple' },
-    { label: 'AWS', color: 'cyan' },
-    { label: 'Spring Boot', color: 'cyan' },
-    { label: 'Gen AI', color: 'green' },
-    { label: 'MCP', color: 'green' },
+  // Signal, not a plain field: this app runs zoneless, so a value mutated
+  // inside a setTimeout callback needs a signal to notify the view.
+  displayedRole = signal('');
+
+  private roles = [
+    'Senior Software Developer',
+    'Full-Stack Engineer',
+    'Cloud & AI Builder',
+  ];
+  private roleIndex = 0;
+  private charIndex = 0;
+  private deleting = false;
+  private timer: ReturnType<typeof setTimeout> | undefined;
+
+  tags = ['Angular', 'React', 'TypeScript', 'Node.js', 'AWS', 'Spring Boot', 'Gen AI', 'MCP'];
+
+  stats: Stat[] = [
+    { value: '3+', label: 'Years of professional experience' },
+    { value: '3', label: 'Enterprise & government employers' },
+    { value: '8+', label: 'Core technologies across the stack' },
   ];
 
-  badges: HeroBadge[] = [
-    {
-      icon: '☁️',
-      label: 'AWS',
-      color: 'cyan',
-      style: { top: '6%', left: '18%' },
-      delay: '0s',
-    },
-    {
-      icon: '🤖',
-      label: 'Gen AI',
-      color: 'green',
-      style: { top: '4%', right: '14%' },
-      delay: '0.4s',
-    },
-    {
-      icon: '⚛️',
-      label: 'React',
-      color: 'purple',
-      style: { top: '38%', left: '2%' },
-      delay: '0.8s',
-    },
-    {
-      icon: '🧠',
-      label: 'LLMs',
-      color: 'pink',
-      style: { top: '58%', left: '6%' },
-      delay: '1.2s',
-    },
-    {
-      icon: '🔗',
-      label: 'MCP',
-      color: 'teal',
-      style: { top: '36%', right: '2%' },
-      delay: '1.6s',
-    },
-    {
-      icon: '✦',
-      label: 'Prompt Eng.',
-      color: 'cyan',
-      style: { bottom: '14%', left: '14%' },
-      delay: '2s',
-    },
-    {
-      icon: '🗄️',
-      label: 'SQL',
-      color: 'purple',
-      style: { bottom: '10%', right: '12%' },
-      delay: '2.4s',
-    },
+  socials: Social[] = [
+    { icon: 'bi-linkedin', label: 'LinkedIn', url: 'https://linkedin.com/in/dhairya-doctor-aab852178/' },
+    { icon: 'bi-github', label: 'GitHub', url: 'https://github.com' },
   ];
 
   ngOnInit() {
-    this.typeInterval = setInterval(() => {
-      if (this.typeIndex < this.fullTitle.length) {
-        this.displayedTitle += this.fullTitle[this.typeIndex];
-        this.typeIndex++;
-      } else {
-        clearInterval(this.typeInterval);
+    if (isPlatformBrowser(this.platformId)) {
+      this.tick();
+    } else {
+      this.displayedRole.set(this.roles[0]);
+    }
+  }
+
+  private tick() {
+    const current = this.roles[this.roleIndex];
+    if (!this.deleting) {
+      this.displayedRole.set(current.slice(0, ++this.charIndex));
+      if (this.charIndex === current.length) {
+        this.deleting = true;
+        this.timer = setTimeout(() => this.tick(), 2200);
+        return;
       }
-    }, 60);
+    } else {
+      this.displayedRole.set(current.slice(0, --this.charIndex));
+      if (this.charIndex === 0) {
+        this.deleting = false;
+        this.roleIndex = (this.roleIndex + 1) % this.roles.length;
+      }
+    }
+    this.timer = setTimeout(() => this.tick(), this.deleting ? 40 : 85);
   }
 
   ngOnDestroy() {
-    clearInterval(this.typeInterval);
+    if (this.timer) clearTimeout(this.timer);
   }
 }

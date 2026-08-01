@@ -1,77 +1,72 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent {
 
   skillCategories = [
     {
-      icon: '🎨',
+      icon: 'bi-palette-fill',
       title: 'Frontend',
       subtitle: 'Frameworks & UI',
       color: 'purple',
-      bgColor: '#eeedfe',
       skills: [
         'Angular', 'React', 'TypeScript', 'JavaScript ES6+',
         'Redux', 'HTML5', 'CSS3 / SCSS', 'Node.js', 'Express.js'
       ]
     },
     {
-      icon: '⚙️',
+      icon: 'bi-gear-fill',
       title: 'Backend',
       subtitle: 'Languages & APIs',
       color: 'blue',
-      bgColor: '#e6f1fb',
       skills: [
         'Java', 'Spring Boot', 'JPA / Hibernate',
         'Python', 'REST API Design', 'Microservices'
       ]
     },
     {
-      icon: '☁️',
+      icon: 'bi-cloud-fill',
       title: 'Cloud & DevOps',
       subtitle: 'Infrastructure & CI/CD',
       color: 'teal',
-      bgColor: '#e1f5ee',
       skills: [
         'AWS EC2', 'AWS S3', 'AWS Lambda', 'AWS RDS',
         'AWS SQS', 'GCP', 'Docker', 'Jenkins', 'GitHub Actions'
       ]
     },
     {
-      icon: '🗄️',
+      icon: 'bi-database-fill',
       title: 'Databases',
       subtitle: 'SQL & NoSQL',
       color: 'amber',
-      bgColor: '#faeeda',
       skills: [
         'PostgreSQL', 'MySQL', 'MongoDB',
         'DynamoDB', 'MS SQL Server', 'Firebase'
       ]
     },
     {
-      icon: '🤖',
+      icon: 'bi-robot',
       title: 'AI & Emerging Tech',
       subtitle: 'Modern tooling',
       color: 'green',
-      bgColor: '#eaf3de',
       skills: [
         'Generative AI', 'Prompt Engineering', 'MCP Servers',
         'Claude Opus & Sonnet', 'GitHub Copilot', 'Windsurf'
       ]
     },
     {
-      icon: '🛠️',
+      icon: 'bi-tools',
       title: 'Tools & Practices',
       subtitle: 'Workflow & methodology',
       color: 'coral',
-      bgColor: '#faece7',
       skills: [
         'Git', 'JIRA', 'SonarQube', 'Agile / Scrum',
         'Unit Testing', 'Cypress', 'Figma', 'Azure DevOps'

@@ -1,1 +1,52 @@
-<p>certifications works!</p>
+<section class="section certs-section">
+  <div class="section-head" appReveal>
+    <p class="eyebrow">Credentials</p>
+    <h2 class="section-title">Certifications &amp; <span class="accent">Achievements</span></h2>
+    <p class="section-subtitle">Continuous learning — validated by industry credentials and results shipped on the job.</p>
+  </div>
+
+  <!-- Achievements strip -->
+  <div class="achievements" appReveal>
+    @for (a of achievements; track a.label) {
+      <div class="ach-card card-x">
+        <i class="bi" [ngClass]="a.icon"></i>
+        <span class="ach-value">{{ a.value }}</span>
+        <span class="ach-label">{{ a.label }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Certifications grid -->
+  <div class="certs-grid">
+    @for (cert of certifications; track cert.title; let i = $index) {
+      @if (cert.credentialUrl) {
+        <a class="cert-card card-x" [ngClass]="'tone-' + cert.color"
+           [href]="cert.credentialUrl" target="_blank" rel="noopener"
+           appReveal [revealDelay]="i * 70">
+          <ng-container [ngTemplateOutlet]="certBody" [ngTemplateOutletContext]="{ $implicit: cert }" />
+        </a>
+      } @else {
+        <div class="cert-card card-x not-linked" [ngClass]="'tone-' + cert.color"
+             appReveal [revealDelay]="i * 70">
+          <ng-container [ngTemplateOutlet]="certBody" [ngTemplateOutletContext]="{ $implicit: cert }" />
+        </div>
+      }
+    }
+  </div>
+</section>
+
+<ng-template #certBody let-cert>
+  <div class="cert-icon"><i class="bi" [ngClass]="cert.icon"></i></div>
+  <div class="cert-body">
+    <h3 class="cert-title">{{ cert.title }}</h3>
+    <p class="cert-issuer">{{ cert.issuer }}</p>
+  </div>
+  <div class="cert-meta">
+    <span class="cert-year">{{ cert.year }}</span>
+    @if (cert.credentialUrl) {
+      <span class="cert-verify">Verify <i class="bi bi-box-arrow-up-right"></i></span>
+    } @else {
+      <span class="cert-verify muted"><i class="bi bi-patch-check"></i> Credential</span>
+    }
+  </div>
+</ng-template>

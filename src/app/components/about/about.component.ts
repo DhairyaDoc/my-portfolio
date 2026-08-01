@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
   info = [
-    { label: 'Location', value: 'Halifax, NS, Canada' },
-    { label: 'Current Role', value: 'Senior Software Developer' },
-    { label: 'Experience', value: '4+ years' },
-    { label: 'Education', value: 'MCS · Dalhousie University' },
-    { label: 'Relocation', value: 'Open to relocate' },
-    { label: 'Availability', value: 'Open to opportunities' },
+    { icon: 'bi-geo-alt-fill', label: 'Location', value: 'Halifax, NS, Canada' },
+    { icon: 'bi-briefcase-fill', label: 'Current Role', value: 'Senior Software Developer' },
+    { icon: 'bi-clock-history', label: 'Experience', value: '3+ years' },
+    { icon: 'bi-mortarboard-fill', label: 'Education', value: 'MCS · Dalhousie University' },
+    { icon: 'bi-airplane-fill', label: 'Relocation', value: 'Open to relocate' },
+    { icon: 'bi-broadcast', label: 'Availability', value: 'Open to opportunities' },
   ];
 
   skills = ['Angular', 'React', 'Node.js', 'AWS', 'Agentic AI', 'Spring Boot'];
+
+  values = [
+    { icon: 'bi-shield-check', title: 'Secure by default', text: 'Enterprise-grade code that clears Snyk, Aqua & DAST gates.' },
+    { icon: 'bi-lightning-charge-fill', title: 'Ships fast', text: 'AI-augmented workflows that compress delivery cycles.' },
+    { icon: 'bi-diagram-3-fill', title: 'Built to scale', text: 'Cloud-native architecture designed to grow with the product.' },
+  ];
 }
