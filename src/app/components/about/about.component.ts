@@ -13,13 +13,11 @@ export class AboutComponent {
   info = [
     { icon: 'bi-geo-alt-fill', label: 'Location', value: 'Halifax, NS, Canada' },
     { icon: 'bi-briefcase-fill', label: 'Current Role', value: 'Senior Software Developer' },
-    { icon: 'bi-clock-history', label: 'Experience', value: '3+ years' },
+    { icon: 'bi-clock-history', label: 'Experience', value: '4+ years' },
     { icon: 'bi-mortarboard-fill', label: 'Education', value: 'MCS · Dalhousie University' },
     { icon: 'bi-airplane-fill', label: 'Relocation', value: 'Open to relocate' },
     { icon: 'bi-broadcast', label: 'Availability', value: 'Open to opportunities' },
   ];
-
-  skills = ['Angular', 'React', 'Node.js', 'AWS', 'Agentic AI', 'Spring Boot'];
 
   values = [
     { icon: 'bi-shield-check', title: 'Secure by default', text: 'Enterprise-grade code that clears Snyk, Aqua & DAST gates.' },

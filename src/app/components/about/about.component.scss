@@ -77,8 +77,6 @@
 .info-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
 .info-value { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
 
-.skill-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 880px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }

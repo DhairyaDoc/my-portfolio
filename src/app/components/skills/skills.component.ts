@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RevealDirective } from '../../directives/reveal.directive';
 
@@ -11,6 +11,9 @@ import { RevealDirective } from '../../directives/reveal.directive';
 })
 export class SkillsComponent {
 
+  activeFilter = signal('All');
+  searchTerm = signal('');
+
   skillCategories = [
     {
       icon: 'bi-palette-fill',
@@ -18,8 +21,8 @@ export class SkillsComponent {
       subtitle: 'Frameworks & UI',
       color: 'purple',
       skills: [
-        'Angular', 'React', 'TypeScript', 'JavaScript ES6+',
-        'Redux', 'HTML5', 'CSS3 / SCSS', 'Node.js', 'Express.js'
+        'Angular', 'RxJS', 'Angular Material', 'React', 'Redux',
+        'TypeScript', 'JavaScript ES6+', 'HTML5', 'CSS3 / SCSS', 'Tailwind CSS'
       ]
     },
     {
@@ -28,8 +31,9 @@ export class SkillsComponent {
       subtitle: 'Languages & APIs',
       color: 'blue',
       skills: [
-        'Java', 'Spring Boot', 'JPA / Hibernate',
-        'Python', 'REST API Design', 'Microservices'
+        'Java', 'Node.js', 'Express.js', 'Spring Boot', 'SQL',
+        'REST API Design', 'Microservices Architecture',
+        'Microfrontend Architecture', 'JWT Authentication'
       ]
     },
     {
@@ -38,8 +42,9 @@ export class SkillsComponent {
       subtitle: 'Infrastructure & CI/CD',
       color: 'teal',
       skills: [
-        'AWS EC2', 'AWS S3', 'AWS Lambda', 'AWS RDS',
-        'AWS SQS', 'GCP', 'Docker', 'Jenkins', 'GitHub Actions'
+        'AWS EC2', 'AWS S3', 'AWS Lambda', 'AWS RDS', 'AWS SQS',
+        'AWS Cognito', 'AWS CloudFormation', 'AWS API Gateway',
+        'GitHub Actions CI/CD', 'OpenShift Container Platform (OCP)', 'Docker', 'Jenkins', 'Webpack'
       ]
     },
     {
@@ -48,8 +53,8 @@ export class SkillsComponent {
       subtitle: 'SQL & NoSQL',
       color: 'amber',
       skills: [
-        'PostgreSQL', 'MySQL', 'MongoDB',
-        'DynamoDB', 'MS SQL Server', 'Firebase'
+        'MS SQL Server', 'PostgreSQL', 'MySQL', 'MongoDB',
+        'DynamoDB', 'Snowflake', 'HDFS'
       ]
     },
     {
@@ -58,8 +63,8 @@ export class SkillsComponent {
       subtitle: 'Modern tooling',
       color: 'green',
       skills: [
-        'Generative AI', 'Prompt Engineering', 'MCP Servers',
-        'Claude Opus & Sonnet', 'GitHub Copilot', 'Windsurf'
+        'Generative AI', 'Agentic AI Workflows', 'Prompt Engineering', 'MCP Servers',
+        'Claude Opus & Sonnet', 'GitHub Copilot', 'Windsurf / Devin', 'AI-Assisted Test Generation'
       ]
     },
     {
@@ -68,9 +73,44 @@ export class SkillsComponent {
       subtitle: 'Workflow & methodology',
       color: 'coral',
       skills: [
-        'Git', 'JIRA', 'SonarQube', 'Agile / Scrum',
-        'Unit Testing', 'Cypress', 'Figma', 'Azure DevOps'
+        'Git', 'Jira', 'Confluence', 'Swagger', 'RAML', 'TDD',
+        'SonarQube', 'OAuth2', 'Agile Methodology', 'SDLC',
+        'SSL Certificates', 'Jest', 'Cypress', 'Protractor',
+        'CI/CD Pipelines', 'Code Reviews', 'Vulnerability Remediation (Snyk/Aqua/DAST)'
       ]
     }
   ];
+
+  filters = ['All', ...this.skillCategories.map(c => c.title)];
+
+  totalSkills = this.skillCategories.reduce((sum, c) => sum + c.skills.length, 0);
+
+  filteredCategories = computed(() => {
+    const filter = this.activeFilter();
+    const term = this.searchTerm().trim().toLowerCase();
+
+    return this.skillCategories
+      .filter(cat => filter === 'All' || cat.title === filter)
+      .map(cat => ({
+        ...cat,
+        skills: term ? cat.skills.filter(s => s.toLowerCase().includes(term)) : cat.skills,
+      }))
+      .filter(cat => cat.skills.length > 0);
+  });
+
+  visibleSkillCount = computed(() =>
+    this.filteredCategories().reduce((sum, c) => sum + c.skills.length, 0)
+  );
+
+  setFilter(title: string) {
+    this.activeFilter.set(title);
+  }
+
+  onSearch(event: Event) {
+    this.searchTerm.set((event.target as HTMLInputElement).value);
+  }
+
+  clearSearch() {
+    this.searchTerm.set('');
+  }
 }

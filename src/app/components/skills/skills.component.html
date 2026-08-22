@@ -5,8 +5,40 @@
     <p class="section-subtitle">The stack I work with daily and have shipped to production.</p>
   </div>
 
+  <div class="skills-toolbar" appReveal [revealDelay]="40">
+    <div class="search-box">
+      <i class="bi bi-search"></i>
+      <input
+        type="text"
+        placeholder="Search skills..."
+        [value]="searchTerm()"
+        (input)="onSearch($event)"
+      />
+      @if (searchTerm()) {
+        <button class="clear-btn" type="button" (click)="clearSearch()" aria-label="Clear search">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      }
+    </div>
+
+    <div class="filter-chips">
+      @for (filter of filters; track filter) {
+        <button
+          type="button"
+          class="chip"
+          [class.active]="activeFilter() === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter }}
+        </button>
+      }
+    </div>
+
+    <p class="result-count">{{ visibleSkillCount() }} / {{ totalSkills }} skills</p>
+  </div>
+
   <div class="skills-grid">
-    @for (category of skillCategories; track category.title; let i = $index) {
+    @for (category of filteredCategories(); track category.title; let i = $index) {
       <div class="skill-card card-x" [ngClass]="'tone-' + category.color" appReveal [revealDelay]="i * 70">
         <div class="card-top">
           <div class="card-icon">
@@ -24,6 +56,11 @@
             <span class="pill" [class]="'pill-' + category.color">{{ skill }}</span>
           }
         </div>
+      </div>
+    } @empty {
+      <div class="no-results">
+        <i class="bi bi-search"></i>
+        <p>No skills match "{{ searchTerm() }}". Try a different search or filter.</p>
       </div>
     }
   </div>

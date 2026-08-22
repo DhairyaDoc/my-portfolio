@@ -30,12 +30,11 @@ export class HeroComponent implements OnInit, OnDestroy {
   private deleting = false;
   private timer: ReturnType<typeof setTimeout> | undefined;
 
-  tags = ['Angular', 'React', 'TypeScript', 'Node.js', 'AWS', 'Spring Boot', 'Gen AI', 'MCP'];
+  tags = ['Angular', 'React', 'TypeScript', 'Node.js', 'Java', 'Spring Boot', 'AWS', 'Gen AI', 'MCP'];
 
   stats: Stat[] = [
-    { value: '3+', label: 'Years of professional experience' },
-    { value: '3', label: 'Enterprise & government employers' },
-    { value: '8+', label: 'Core technologies across the stack' },
+    { value: '4+', label: 'Years of professional experience' },
+    { value: '9+', label: 'Core technologies across the stack' },
   ];
 
   socials: Social[] = [
